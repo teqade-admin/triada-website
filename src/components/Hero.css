@@ -1,0 +1,71 @@
+
+/* Hero Section Styles */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  /* margin-top: 80px; */
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: normal;
+  color: var(--brand-dark-brown);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--brand-brown);
+  opacity: 0.9;
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-primary {
+  background-color: var(--brand-brown);
+  color: white;
+}
+
+.cta-primary:hover {
+  background-color: var(--brand-dark-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(157, 84, 42, 0.3);
+  color: white;
+}
+
+.cta-secondary {
+  background-color: transparent;
+  color: var(--brand-brown);
+  border: 2px solid var(--brand-brown);
+}
+
+.cta-secondary:hover {
+  background-color: var(--brand-brown);
+  color: white;
+  transform: translateY(-2px);
+}

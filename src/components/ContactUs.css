@@ -1,0 +1,214 @@
+.contact-section {
+  height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.contact-container {
+  max-width: 800px; /* INCREASED: From 600px to 800px for wider web view */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Header - Reduced margins for lower height */
+.contact-header {
+  text-align: center;
+  margin-bottom: 2rem; /* REDUCED: From 3rem to 2rem */
+  width: 100%;
+}
+
+.contact-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: var(--brand-dark-brown);
+  margin-bottom: 0.5rem; /* REDUCED: From 1rem to 0.5rem */
+  font-weight: normal;
+  line-height: 1.1; /* Tighter line height */
+}
+
+.contact-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--brand-brown);
+  opacity: 0.8;
+  max-width: 600px; /* Keep subtitle width reasonable */
+  margin: 0 auto;
+  line-height: 1.4; /* Tighter line height */
+}
+
+/* Form Section - Compact design */
+.contact-form-section {
+  background: var(--brand-white);
+  border: 1px solid var(--brand-cream);
+  border-radius: 16px;
+  padding: clamp(1.2rem, 3vw, 2rem); /* REDUCED: From 1.5rem-3rem to 1.2rem-2rem */
+  box-shadow: 0 8px 25px rgba(157, 84, 42, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* REDUCED: From 1.5rem to 1rem */
+  width: 100%;
+}
+
+.form-input,
+.form-textarea {
+  padding: clamp(0.6rem, 1.5vw, 0.9rem); /* REDUCED: From 0.8rem-1.2rem to 0.6rem-0.9rem */
+  border: 1px solid var(--brand-cream);
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  transition: all 0.3s ease;
+  background: var(--brand-white);
+  color: var(--brand-dark-brown);
+  font-family: 'Belleza', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: clamp(70px, 10vw, 90px); /* REDUCED: From 100px-140px to 70px-90px */
+}
+
+.submit-button {
+  background-color: var(--brand-brown);
+  color: var(--brand-white);
+  border: none;
+  padding: clamp(0.6rem, 1.5vw, 0.9rem) clamp(1.2rem, 3vw, 1.5rem); /* REDUCED padding */
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem; /* REDUCED: From 1rem to 0.5rem */
+  font-family: 'Belleza', sans-serif;
+  text-transform: none;
+  width: 100%;
+  max-width: 250px; /* REDUCED: From 300px to 250px */
+  align-self: center;
+}
+
+.status-message {
+  padding: 0.8rem; /* REDUCED: From 1rem to 0.8rem */
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 0.5rem; /* REDUCED: From 1rem to 0.5rem */
+  font-family: 'Belleza', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Desktop - Large screens benefit from wider form */
+@media (min-width: 1200px) {
+  .contact-container {
+    max-width: 900px; /* Even wider on large screens */
+  }
+}
+
+/* Tablet view - Moderate width */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .contact-container {
+    max-width: 700px;
+  }
+}
+
+/* Mobile Optimization - Compact height */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1rem;
+    height: 100vh;
+  }
+
+  .contact-container {
+    max-width: 100%;
+  }
+
+  .contact-header {
+    margin-bottom: 1.5rem; /* REDUCED: From 2rem to 1.5rem on mobile */
+  }
+
+  .contact-form-section {
+    padding: 1rem; /* REDUCED: From 1.5rem to 1rem on mobile */
+  }
+
+  .contact-form {
+    gap: 0.8rem; /* REDUCED: From 1rem to 0.8rem on mobile */
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.6rem; /* Compact padding on mobile */
+  }
+
+  .form-textarea {
+    min-height: 60px; /* REDUCED: Even smaller on mobile */
+  }
+
+  .submit-button {
+    max-width: 100%; /* Full width button on mobile */
+    margin-top: 0.3rem; /* Minimal top margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 0.5rem;
+  }
+
+  .contact-form-section {
+    padding: 0.8rem; /* REDUCED: Very compact on small mobile */
+  }
+
+  .contact-header {
+    margin-bottom: 1rem; /* REDUCED: Minimal header margin */
+  }
+
+  .contact-form {
+    gap: 0.6rem; /* REDUCED: Very tight gaps on small screens */
+  }
+
+  .form-textarea {
+    min-height: 50px; /* REDUCED: Minimal textarea height */
+  }
+
+  .status-message {
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+  }
+}
+
+/* Landscape mobile orientation - Extra compact */
+@media (max-height: 600px) and (orientation: landscape) {
+  .contact-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+
+  .contact-header {
+    margin-bottom: 0.5rem; /* Minimal header in landscape */
+  }
+
+  .contact-form {
+    gap: 0.5rem; /* Very tight gaps in landscape */
+  }
+
+  .form-textarea {
+    min-height: 40px; /* Minimal textarea in landscape */
+  }
+
+  .contact-title {
+    margin-bottom: 0.2rem;
+  }
+}

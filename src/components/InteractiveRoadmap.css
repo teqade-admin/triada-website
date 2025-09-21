@@ -1,0 +1,185 @@
+
+
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Ensure the background covers the entire viewport */
+#root {
+  min-height: 100vh;
+}
+
+/* Typography */
+.brand-heading {
+  font-family: 'The Seasons', serif;
+  font-weight: normal;
+}
+
+.brand-body {
+  font-family: 'Belleza', sans-serif;
+}
+
+/* Text Animation Keyframes */
+@keyframes textSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+  }
+  60% {
+    transform: translateX(5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.title-slide-in {
+  animation: titleSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+
+/* Smooth scroll behavior when unlocked */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar with brand colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-cream);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-brown);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-dark-brown);
+}
+
+/* Brand color utilities - Modified to use primary colors predominantly */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
+}
+
+.bg-brand-card {
+  background: var(--brand-white);
+  border: 1px solid var(--brand-cream);
+}
+
+.bg-brand-card:hover {
+  background: var(--brand-cream);
+  border-color: var(--brand-brown);
+}
+
+.text-brand-brown {
+  color: var(--brand-brown);
+}
+
+.text-brand-dark-brown {
+  color: var(--brand-dark-brown);
+}
+
+.text-brand-gray {
+  color: white;
+  font-weight: 500;
+}
+
+.text-brand-olive {
+  color: var(--brand-brown);
+  opacity: 0.8;
+}
+
+.bg-brand-brown {
+  background-color: var(--brand-dark-brown);
+}
+
+.bg-brand-brown:hover {
+  background-color: var(--brand-brown);
+}
+
+.border-brand-brown {
+  border-color: var(--brand-brown);
+}
+
+.bg-brand-olive {
+  background-color: var(--brand-olive);
+}
+
+.bg-brand-icon {
+  background: var(--brand-cream);
+}
+
+.bg-brand-icon:hover {
+  background: linear-gradient(135deg, var(--brand-cream) 90%, var(--brand-sage) 10%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+  
+  .navbar-menu {
+    gap: 1rem;
+  }
+  
+  .hero-section {
+    padding: 1rem;
+    margin-top: 60px;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}

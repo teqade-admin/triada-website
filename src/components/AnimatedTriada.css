@@ -1,0 +1,17 @@
+/* Remove all previous animated-text CSS and replace with this simple version */
+.triada-animation {
+  font-family: 'The Seasons', serif !important;
+  font-weight: bold !important;
+}
+
+/* For hero title specifically */
+.hero-title .triada-animation {
+  font-size: clamp(3rem, 8vw, 8rem) !important;
+  font-weight: bold !important;
+}
+
+/* For navbar logo specifically */
+.navbar-logo .triada-animation {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
