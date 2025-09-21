@@ -107,13 +107,13 @@ function App() {
           <HeroSection />
         </section>
         
-        {/* Interactive Roadmap Section */}
+        {/* Interactive Roadmap Section
         <section className="page-section roadmap-page">
           <InteractiveRoadmap 
             onScrollLockChange={setRoadmapScrollLocked}
             onSectionComplete={() => scrollToSection(2)} // Go to contact when roadmap completes
           />
-        </section>
+        </section> */}
         
         {/* Contact Section */}
         <section className="page-section contact-page">

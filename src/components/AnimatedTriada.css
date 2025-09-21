@@ -1,17 +1,22 @@
-/* Remove all previous animated-text CSS and replace with this simple version */
+/* AnimatedTriada component styles */
 .triada-animation {
-  font-family: 'The Seasons', serif !important;
-  font-weight: bold !important;
+  font-family: 'The Seasons', serif;
+  font-weight: bold;
+  /* Use clamp for fluid sizing of the entire component */
+  /* font-size: clamp(3rem, 20vw, 20rem); */
+  color: var(--brand-dark-brown);
+  line-height: 1.1;
+  display: inline-block;
+  /* Prevent word breaks in the 'triada' part */
+  white-space: nowrap;
 }
 
-/* For hero title specifically */
+/* Specific size for the hero title. This will override the general style */
 .hero-title .triada-animation {
-  font-size: clamp(3rem, 8vw, 8rem) !important;
-  font-weight: bold !important;
+  font-size: clamp(3rem, 30vw, 20rem); 
 }
 
-/* For navbar logo specifically */
+/* Specific size for a navbar logo */
 .navbar-logo .triada-animation {
-  font-size: 1.5rem !important;
-  font-weight: bold !important;
+  font-size: clamp(1.5rem, 2vw, 50rem); 
 }

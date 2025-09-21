@@ -19,7 +19,7 @@
 
 /* Keep your existing HTML background but override for app */
 html {
-  background-color: aqua;
+  background-color: rgb(251, 252, 252);
   height: 100%;
   overflow: hidden;
   font-family: 'Belleza', sans-serif;
