@@ -19,7 +19,6 @@
 
 /* Keep your existing HTML background but override for app */
 html {
-  background-color: rgb(251, 252, 252);
   height: 100%;
   overflow: hidden;
   font-family: 'Belleza', sans-serif;
@@ -36,6 +35,13 @@ body {
   font-family: 'Belleza', sans-serif;
   height: 100%;
   overflow: hidden;
+  background-image: url('./clay2.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Optional: Add a subtle overlay for better text readability */
+  background-color: rgb(228, 222, 217);
+  background-blend-mode: overlay;
 }
 
 /* Keep your existing root styles but add fullscreen for app */
@@ -129,11 +135,11 @@ body {
 }
 
 /* NEW: Specific adjustments for each section */
-.hero-page {
+/* .hero-page {
   background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
   justify-content: center;
   padding-top: 0;
-}
+} */
 
 .roadmap-page {
   background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
@@ -143,7 +149,14 @@ body {
   overflow-x: hidden;
 }
 
-.contact-page {
+/* .contact-page {
+  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
+  justify-content: center;
+  padding-top: 0;
+  overflow-y: auto;
+} */
+
+.about-page {
   background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
   justify-content: center;
   padding-top: 0;
@@ -164,33 +177,6 @@ body {
 .roadmap-page {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-/* NEW: Ensure navbar stays on top */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--brand-cream);
-  display: flex;
-  align-items: center;
-}
-
-/* NEW: Navbar container */
-.navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
 }
 
 /* NEW: Ensure proper content alignment with navbar space */

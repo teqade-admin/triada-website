@@ -10,15 +10,16 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
+  background: none;
   /* margin-top: 80px; */
    /* Add these lines for the background image */
-  /* background-image: url('./sand.jpg');  */
+  /* background-image: url('./clay2.jpg'); 
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   /* Optional: Add a subtle overlay for better text readability */
-  /* background-color: rgb(228, 222, 217); */
-  background-blend-mode: overlay;
+  /* background-color: rgb(228, 222, 217);
+  background-blend-mode: overlay; */
 }
 
 .hero-title {

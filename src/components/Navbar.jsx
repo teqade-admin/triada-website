@@ -13,6 +13,18 @@ const Navbar = () => {
     setIsMenuOpen(false)
   }
 
+  // Smooth scroll to section function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+    closeMenu() // Close mobile menu after navigation
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -22,9 +34,30 @@ const Navbar = () => {
         
         {/* Desktop Menu */}
         <ul className={`navbar-menu brand-body ${isMenuOpen ? 'active' : ''}`}>
-          <li><a href="#home" onClick={closeMenu}>Home</a></li>
-          <li><a href="#roadmap" onClick={closeMenu}>Services</a></li>
-          <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+          <li>
+            <button 
+              className="nav-button"
+              onClick={() => scrollToSection('home')}
+            >
+              Home
+            </button>
+          </li>
+          <li>
+            <button 
+              className="nav-button"
+              onClick={() => scrollToSection('about')}
+            >
+              About
+            </button>
+          </li>
+          <li>
+            <button 
+              className="nav-button"
+              onClick={() => scrollToSection('contact')}
+            >
+              Contact
+            </button>
+          </li>
         </ul>
 
         {/* Mobile Hamburger Button */}

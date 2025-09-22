@@ -1,4 +1,4 @@
-/* Responsive Navbar Styles */
+/* Responsive Navbar Styles - Fixed Visibility Issues */
 .navbar {
   position: fixed;
   top: 0;
@@ -7,16 +7,16 @@
   z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--brand-cream);
-  padding: clamp(0.5rem, 2vw, 1rem) 0; /* Responsive vertical padding */
+  padding: clamp(0.5rem, 2vw, 1rem) 0;
   transition: all 0.3s ease;
 }
 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem); /* Responsive horizontal padding */
+  padding: 0 clamp(1rem, 4vw, 2rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,17 +24,17 @@
 }
 
 .navbar-logo {
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Responsive logo size */
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: normal;
   color: var(--brand-dark-brown);
-  z-index: 1001; /* Above mobile menu */
+  z-index: 1001;
   transition: font-size 0.3s ease;
 }
 
-/* Desktop Menu */
+/* Desktop Menu - ALWAYS VISIBLE ON DESKTOP */
 .navbar-menu {
-  display: flex;
-  gap: clamp(1rem, 3vw, 2rem); /* Responsive menu gap */
+  display: flex; /* Always flex on desktop */
+  gap: clamp(1rem, 3vw, 2rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -42,21 +42,30 @@
   transition: all 0.3s ease;
 }
 
-.navbar-menu a {
-  text-decoration: none;
+.navbar-menu li {
+  margin: 0;
+}
+
+/* Navigation Button Styles */
+.nav-button {
+  background: none;
+  border: none;
+  font-family: 'Belleza', sans-serif;
+  font-size: inherit;
   color: var(--brand-brown);
   font-weight: 500;
+  cursor: pointer;
   transition: color 0.3s ease;
   position: relative;
-  padding: 0.5rem 0; /* Touch-friendly padding */
+  padding: 0.5rem 0;
   white-space: nowrap;
 }
 
-.navbar-menu a:hover {
+.nav-button:hover {
   color: var(--brand-dark-brown);
 }
 
-.navbar-menu a::after {
+.nav-button::after {
   content: '';
   position: absolute;
   bottom: 0.2rem;
@@ -67,13 +76,13 @@
   transition: width 0.3s ease;
 }
 
-.navbar-menu a:hover::after {
+.nav-button:hover::after {
   width: 100%;
 }
 
-/* Hamburger Menu Button - Hidden on Desktop */
+/* Hamburger Menu Button - HIDDEN ON DESKTOP, VISIBLE ON MOBILE */
 .hamburger {
-  display: none;
+  display: none; /* Hidden by default (desktop) */
   flex-direction: column;
   justify-content: space-around;
   width: 30px;
@@ -84,10 +93,6 @@
   padding: 0;
   z-index: 1001;
   transition: transform 0.3s ease;
-}
-
-.hamburger:hover {
-  transform: scale(1.1);
 }
 
 .hamburger-line {
@@ -113,6 +118,168 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
+/* MOBILE STYLES - Show hamburger, hide desktop menu */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 0;
+  }
+  
+  .navbar-container {
+    padding: 0 1rem;
+  }
+  
+  .navbar-logo {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+  }
+  
+  /* SHOW HAMBURGER MENU ON MOBILE */
+  .hamburger {
+    display: flex !important; /* Force display on mobile */
+  }
+  
+  /* TRANSFORM DESKTOP MENU FOR MOBILE */
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 280px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 80px 2rem 2rem;
+    gap: 2rem;
+    font-size: 1.2rem;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+  
+  /* SHOW MOBILE MENU WHEN ACTIVE */
+  .navbar-menu.active {
+    right: 0 !important; /* Slide in from right */
+  }
+  
+  .navbar-menu li {
+    width: 100%;
+    border-bottom: 1px solid var(--brand-cream);
+    padding-bottom: 1rem;
+  }
+  
+  .navbar-menu li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Mobile Navigation Button Styles */
+  .nav-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    color: var(--brand-dark-brown);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  
+  .nav-button:hover {
+    background: var(--brand-cream);
+    padding-left: 1rem;
+    color: var(--brand-dark-brown);
+  }
+  
+  .nav-button::after {
+    display: none; /* Remove underline effect on mobile */
+  }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.6rem 0;
+  }
+  
+  .navbar-container {
+    padding: 0 0.8rem;
+  }
+  
+  /* Ensure hamburger is visible on small mobile */
+  .hamburger {
+    display: flex !important;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .hamburger-line {
+    width: 22px;
+    height: 2.5px;
+  }
+  
+  .navbar-menu {
+    width: 260px;
+    padding: 70px 1.5rem 1.5rem;
+    font-size: 1.1rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Ensure desktop menu is always visible on large screens */
+@media (min-width: 769px) {
+  .navbar-menu {
+    display: flex !important; /* Force flex display on desktop */
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding: 0 !important;
+    gap: clamp(1rem, 3vw, 2rem) !important;
+    font-size: clamp(0.9rem, 2vw, 1.5rem) !important;
+    box-shadow: none !important;
+    transition: none !important;
+    z-index: auto !important;
+  }
+  
+  .hamburger {
+    display: none !important; /* Force hide on desktop */
+  }
+  
+  .navbar-menu li {
+    width: auto !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .nav-button {
+    display: inline-block !important;
+    width: auto !important;
+    text-align: center !important;
+    font-size: inherit !important;
+    padding: 0.5rem 0 !important;
+    color: var(--brand-brown) !important;
+    background: transparent !important;
+    border: none;
+  }
+  
+  .nav-button:hover {
+    background: transparent !important;
+    padding-left: 0 !important;
+    color: var(--brand-dark-brown) !important;
+  }
+  
+  .nav-button::after {
+    display: block !important; /* Show underline effect on desktop */
+    /* background: transparent; */
+  }
+}
+
 /* Mobile Overlay */
 .mobile-overlay {
   display: none;
@@ -133,118 +300,6 @@
   }
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0.8rem 0;
-  }
-  
-  .navbar-container {
-    padding: 0 1rem;
-  }
-  
-  .navbar-logo {
-    font-size: clamp(1.1rem, 4vw, 1.3rem);
-  }
-  
-  /* Show Hamburger Menu */
-  .hamburger {
-    display: flex;
-  }
-  
-  /* Hide Desktop Menu, Show Mobile Menu */
-  .navbar-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 80px 2rem 2rem;
-    gap: 2rem;
-    font-size: 1.2rem;
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1000;
-  }
-  
-  .navbar-menu.active {
-    right: 0;
-  }
-  
-  .navbar-menu li {
-    width: 100%;
-    border-bottom: 1px solid var(--brand-cream);
-    padding-bottom: 1rem;
-  }
-  
-  .navbar-menu li:last-child {
-    border-bottom: none;
-  }
-  
-  .navbar-menu a {
-    display: block;
-    width: 100%;
-    font-size: 1.2rem;
-    padding: 1rem 0;
-    color: var(--brand-dark-brown);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  .navbar-menu a:hover {
-    background: var(--brand-cream);
-    padding-left: 1rem;
-    color: var(--brand-dark-brown);
-  }
-  
-  .navbar-menu a::after {
-    display: none; /* Remove underline effect on mobile */
-  }
-  
-  /* Show Mobile Overlay */
-  .mobile-overlay {
-    display: block;
-  }
-}
-
-/* Small Mobile Optimization */
-@media (max-width: 480px) {
-  .navbar {
-    padding: 0.6rem 0;
-  }
-  
-  .navbar-container {
-    padding: 0 0.8rem;
-  }
-  
-  .navbar-logo {
-    font-size: clamp(1rem, 5vw, 1.2rem);
-  }
-  
-  .hamburger {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .hamburger-line {
-    width: 22px;
-    height: 2.5px;
-  }
-  
-  .navbar-menu {
-    width: 260px;
-    padding: 70px 1.5rem 1.5rem;
-    font-size: 1.1rem;
-    gap: 1.5rem;
-  }
-}
-
 /* Focus Styles for Accessibility */
 .hamburger:focus {
   outline: 2px solid var(--brand-brown);
@@ -252,8 +307,8 @@
   border-radius: 4px;
 }
 
-.navbar-menu a:focus {
-  outline: 1px solid var(--brand-brown);
-  outline-offset: 1px;
-  border-radius: 2px;
+.nav-button:focus {
+  outline: 2px solid var(--brand-brown);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

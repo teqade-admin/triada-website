@@ -3,6 +3,7 @@ import InteractiveRoadmap from './components/InteractiveRoadmap';
 import Navbar from './components/Navbar';
 import HeroSection from './components/Hero';
 import ContactUs from './components/ContactUs';
+import About from './components/About';
 import './App.css';
 
 function App() {
@@ -105,6 +106,10 @@ function App() {
         {/* Hero Section */}
         <section className="page-section hero-page">
           <HeroSection />
+        </section>
+
+        <section className="page-section about-page">
+          <About />
         </section>
         
         {/* Interactive Roadmap Section
