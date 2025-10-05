@@ -11,8 +11,11 @@ const HeroSection = () => {
       <h1 className="hero-title brand-heading">
          <AnimatedTriada className="triada-animation" />
       </h1>
+      <h2 className="hero-slogan brand-heading">
+          Strategy. Scale. India.
+      </h2>
       <p className="hero-subtitle brand-body">
-        Empowering brands to grow with clarity, consistency, and purpose through strategic design and innovative solutions.
+        Scaling what’s local. Growing what’s global. Taking India everywhere.
       </p>
       <div className="hero-cta">
         <a href="#process" className="cta-button cta-primary brand-body">

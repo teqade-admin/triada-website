@@ -37,7 +37,7 @@ const Navbar = () => {
           <li>
             <button 
               className="nav-button"
-              onClick={() => scrollToSection('home')}
+              onClick={() => scrollToSection('hero-section')}
             >
               Home
             </button>
@@ -45,7 +45,7 @@ const Navbar = () => {
           <li>
             <button 
               className="nav-button"
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('about-section')}
             >
               About
             </button>
@@ -53,7 +53,7 @@ const Navbar = () => {
           <li>
             <button 
               className="nav-button"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('contact-section')}
             >
               Contact
             </button>

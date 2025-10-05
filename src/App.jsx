@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/Hero';
 import ContactUs from './components/ContactUs';
 import About from './components/About';
+import CollaborationSection from './components/Collaboration';
 import './App.css';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   const touchStartY = useRef(0);
   const [roadmapScrollLocked, setRoadmapScrollLocked] = useState(false);
 
-  const totalSections = 3; // Hero, Roadmap, Contact
+  const totalSections = 4; // Hero, Roadmap, Contact
 
   const scrollToSection = (sectionIndex) => {
     if (isAnimating.current || sectionIndex < 0 || sectionIndex >= totalSections) return;
@@ -103,27 +104,22 @@ function App() {
           willChange: 'transform'
         }}
       >
-        {/* Hero Section */}
-        <section className="page-section hero-page">
+        <section className="page-section hero-page" id="hero-section">
           <HeroSection />
         </section>
 
-        <section className="page-section about-page">
+        <section className="page-section about-page" id="about-section">
           <About />
         </section>
-        
-        {/* Interactive Roadmap Section
-        <section className="page-section roadmap-page">
-          <InteractiveRoadmap 
-            onScrollLockChange={setRoadmapScrollLocked}
-            onSectionComplete={() => scrollToSection(2)} // Go to contact when roadmap completes
-          />
-        </section> */}
-        
-        {/* Contact Section */}
-        <section className="page-section contact-page">
+
+        <section className="page-section collab-page" id="collab-section">
+          <CollaborationSection />
+        </section>
+
+        <section className="page-section contact-page" id="contact-section">
           <ContactUs />
         </section>
+
       </div>
     </div>
   );
