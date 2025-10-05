@@ -24,6 +24,8 @@ html {
   font-family: 'Belleza', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16x;
+
 }
 
 /* Apply background to entire page */
