@@ -42,7 +42,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Left Side - Image */
@@ -51,6 +51,7 @@
 }
 
 .contact-image-container {
+  height: 100%;
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
@@ -59,8 +60,8 @@
 
 .contact-image {
   width: 100%;
-  height: auto;
-  min-height: 1000px;
+  height: 100%;
+  min-height: unset;
   object-fit: cover;
   display: block;
 }
@@ -118,7 +119,7 @@
   color: white;
   border: none;
   border-radius: 0.8rem;
-  padding: 1.3rem;
+  padding: 1.5rem;
   font-size: clamp(1rem, 1.5rem, 2rem);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -214,138 +215,56 @@
   text-decoration-thickness: 3px;
   transform: translateY(-1px);
 }
-
-/* Responsive Design - FIXED MOBILE VIEW */
+/* Responsive Design - FINAL, CENTERED MOBILE VIEW */
 @media (max-width: 968px) {
-  .contact-container {
-    max-width: 95%;
-    padding: 2rem 1.5rem;
+
+  .contact-section {
+    padding: 2rem 0rem;
   }
-  
+  /* 1. Make the container full-width with controlled padding */
+  .contact-container {
+    max-width: 100%; /* Override the 80% max-width from desktop */
+    padding: 0.75rem 1rem; /* This now controls the space from the screen edge */
+    box-sizing: border-box; /* This is crucial to prevent overflow */
+  }
+
+  /* 2. Hide the image and stack the form */
   .contact-content {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  
-  /* Hide image completely on mobile */
   .contact-image-section {
     display: none;
   }
-  
+
+  /* 3. Remove any extra padding on the form section itself */
   .contact-form-section {
     padding: 0;
   }
   
+  /* 4. Ensure form elements fill the available space correctly */
+  .form-input, .form-textarea, .submit-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* 5. Center the button with a sensible max-width */
+  .submit-button {
+    max-width: 100%;
+    align-self: center;
+  }
+
+  /* Typography adjustments for smaller screens */
   .contact-header {
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
   }
-  
   .contact-title {
-    font-size: 2.5rem;
+    font-size: clamp(2.2rem, 8vw, 2.8rem);
   }
-  
   .contact-subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(1.5rem, 4vw, 1.2rem);
   }
-  
   .contact-form {
     gap: 1.5rem;
-  }
-  
-  .form-input, .form-textarea {
-    font-size: 1.5rem;
-    padding: 1rem;
-  }
-  
-  .submit-button {
-    font-size: 1.1rem;
-    padding: 1.2rem;
-  }
-  
-  .schedule-call-text, .schedule-call-btn {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 2rem 1rem;
-  }
-  
-  .contact-container {
-    max-width: 98%;
-    padding: 1.5rem 1rem;
-  }
-  
-  .contact-title {
-    font-size: 2rem;
-  }
-  
-  .contact-subtitle {
-    font-size: 1rem;
-  }
-  
-  .contact-header {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-input, .form-textarea {
-    font-size: 1rem;
-    padding: 0.9rem;
-  }
-  
-  .submit-button {
-    font-size: 1rem;
-    padding: 1rem;
-  }
-  
-  .schedule-call-text, .schedule-call-btn {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-section {
-    padding: 1rem 0.5rem;
-  }
-  
-  .contact-container {
-    max-width: 100%;
-    padding: 0.5rem 0.8rem;
-    border-radius: 1rem;
-  }
-  
-  .contact-title {
-    font-size: 1.5rem;
-  }
-  
-  .contact-subtitle {
-    font-size: 0.95rem;
-  }
-  
-  .contact-header {
-    margin-bottom: 1rem;
-  }
-  
-  .contact-form {
-    gap: 0.5rem;
-  }
-  
-  .form-input, .form-textarea {
-    font-size: 0.95rem;
-    padding: 0.8rem;
-  }
-  
-  .submit-button {
-    font-size: 0.95rem;
-    padding: 0.5rem;
-  }
-  
-  .schedule-call-text, .schedule-call-btn {
-    font-size: 0.85rem;
-  }
-  
-  .schedule-call-section {
-    padding-top: 0.2rem;
   }
 }

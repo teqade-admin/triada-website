@@ -1,178 +1,164 @@
-.collab-section {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 5rem 2rem;
-}
-
 .collab-title {
-  font-size: clamp(3rem, 8rem, 10rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: bold;
-  color: #8B4513;
-  margin-bottom: 0em;
+  color: var(--brand-dark-brown);
   text-align: center;
+  margin-bottom: 0.5rem;
 }
-
 .collab-intro {
-  font-size: clamp(1.5rem, 3rem, 3rem);
-  color: #A0522D;
+  font-size: clamp(1.5rem, 2.5vw, 2.5em);
+  color: var(--brand-brown);
   text-align: center;
-  margin-bottom: 3rem;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.5;
 }
+/* Collaboration.css - Final Corrected Version */
 
+/* --- Section & Grid Layout --- */
+.collab-section {
+  width: 100%;
+}
 .collab-card-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  /* box-sizing: border-box; */
+  padding: 0 0rem;
+  overflow:auto;
 }
 
+/* --- Card Base Styles --- */
 .collab-card {
-  background: #fffdf6;
-  border-color: var(--brand-brown);
-  border-radius: 1.3rem;
-  box-shadow: 0 8px 32px rgba(157, 84, 42, 0.09);
-  padding: 1rem 1rem 0.5rem;
-  border: 1.5px solid var(--brand-cream);
+  background: white;
+  color: var(--brand-dark-brown);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 35px rgba(157, 84, 42, 0.12);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.24s, transform 0.18s;
-  opacity: 0.9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow:hidden;
+  height: 100%;
+  min-width: 0; /* CRITICAL: Prevents grid items from overflowing */
 }
-
 .collab-card:hover {
-  box-shadow: 0 16px 40px rgba(157, 84, 42, 0.15);
-  transform: translateY(-3px) scale(1.015);
-  opacity: 1;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(157, 84, 42, 0.18);
 }
 
-.card-head {
-  /* background-color: rgb(216, 219, 224); */
-  width: 100%;
-  border-radius: 0.8rem;
-  margin-bottom: 1rem;
-}
-/* .card-head:hover {
-  background-color: var(--brand-dark-brown);
-} */
-
-.card-head h3 {
-  font-size: clamp(1.5rem, 2.5rem, 3rem);
-  color: var(--brand-dark-brown);
-  margin-bottom: 0.1rem;
-  letter-spacing: -0.01em;
-}
-.card-intro {
-  font-size: 1.8rem;
-  color:var(--brand-dark-brown);
-  margin-bottom: 0.7rem;
-
-}
-
-.card-desc {
-  font-size: 1.8rem;
-  color: rgb(165, 93, 25);
-  margin-bottom: 1.3rem;
-  width: 90%;
-}
-
-.card-list {
-  padding-left: 1.2rem;
-  margin-bottom: 1.2rem;
-}
-.card-list li {
-  font-size: 1.03rem;
-  margin-bottom: 0.54rem;
-  color: #86582b;
-  opacity: 0.9;
-}
-
-.card-link {
-  margin-top: auto;
-  font-size: 2rem;
-  font-weight: 500;
-  color: #704646;
-  /* text-decoration: underline; */
-  transition: color 0.21s;
-  letter-spacing: 0.02em;
-}
-
-.card-link:hover {
-  color: #8B4513;
-  text-decoration-thickness: 2.5px;
-  text-decoration: underline;
+/* --- Card Content & Image --- */
+.card-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex-grow: 1;
 }
 
 .card-image {
+  width: 100%; /* Image now correctly takes the full width of the card */
+  height: 50%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   display: block;
-  width: 55px;
-  margin: 16px auto 0;
-  border-radius: 0.8rem;
+  margin: 0;  
+}
+
+/* --- Card Typography (Larger Fonts) --- */
+.card-head h3 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--brand-dark-brown);
+  margin-bottom: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+.card-intro {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--brand-brown);
+  margin-bottom: 0;
   opacity: 0.9;
+  line-height: 1.4;
+  text-align: center;
+}
+.card-desc {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-dark-brown);
+  line-height: 1.6;
+  /* This allows the text to take up space and push the image down */
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 0%;
 }
 
-
-/* Tablet: Two columns, larger padding, slightly reduced fonts */
-@media (max-width: 1100px) {
-  .collab-card-row { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .collab-section { padding: 3rem 1rem; }
-  .collab-title { font-size: clamp(2rem, 5vw, 3.5rem); }
-  .collab-intro { font-size: clamp(1.1rem, 2vw, 2rem); }
-  .collab-card { font-size: 1rem; }
-}
-
-/* Mobile Large: 1 column, reduced margins, smaller text and buttons */
-@media (max-width: 800px) {
-  .collab-section { max-width: 97vw; padding: 2rem 0.5rem; }
-  .collab-card-row { grid-template-columns: 1fr; gap: 1rem; }
-  .collab-title { font-size: clamp(1.7rem, 6vw, 2.5rem); }
-  .collab-intro { font-size: clamp(1rem, 4vw, 1.2rem); margin-bottom: 1.5rem; }
-  .collab-card { padding: 1.1rem 0.5rem 0.3rem; font-size: 0.98rem; }
-  .card-head h3 { font-size: clamp(1.2rem, 4vw, 1.6rem); }
-  .card-intro { font-size: 1.1rem; }
-  .card-desc { font-size: 1.1rem; width: 98%; }
-  .card-link { font-size: 1.1rem; }
-  .card-image { width: 44px; margin: 15px auto 0; }
-}
-
-/* Mobile Small: Extreme compacting for smaller phones */
-@media (max-width: 500px) {
-  .collab-section { max-width: 100vw; padding: 1.2rem 0.3rem; }
-  .collab-title { font-size: 1.18rem; }
-  .collab-intro { font-size: 0.95rem; margin-bottom: 1rem; }
-  .collab-card { border-radius: 0.7rem; padding: 0.6rem 0.2rem 0.25rem; }
-  .card-head h3 { font-size: 1.07rem; }
-  .card-intro, .card-desc { font-size: 0.94rem; }
-  .card-link { font-size: 1rem; }
-  .card-image { width: 36px; margin: 13px auto 0; }
-}
-
-/* Ultra compact, for old or ultra-narrow phones */
-@media (max-width: 340px) {
-  .collab-section, .collab-card { padding: 0.5rem 0; }
-  .collab-title, .collab-intro, .card-head h3, .card-intro, .card-desc, .card-link { font-size: 0.84rem; }
-  .card-image { width: 24px; }
-}
-
-.collab-slider { position: relative; width: 100%; min-height: 350px; }
-.collab-slider-indicators {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 9px;
-  margin-top: 18px;
-}
-.slider-dot {
-  width: 14px;
-  height: 14px;
-  background: #eee;
-  border-radius: 50%;
+/* --- Full-Width Button --- */
+.card-link {
+  background-color: var(--brand-brown);
+  color: var(--brand-cream);
+  border: none;
+  padding: 1.5rem 0;
+  width: 100%;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-weight: 600;
+  text-align: center;
   cursor: pointer;
-  transition: background 0.2s;
-  border: 2px solid #A0522D;
-  opacity: 0.55;
+  text-decoration: none;
+  display: block;
+  margin-top: 0; /* Space between image and button */
+  transition: background-color 0.3s ease;
 }
-.slider-dot.active {
-  background: #A0522D;
-  opacity: 1;
+.card-link:hover {
+  background-color: var(--brand-dark-brown);
 }
 
+/* --- Mobile Story Slider Styles --- */
+.story-slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 35rem;
+  margin: 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  height: 70vh;
+}
+.story-progress-bars {
+  position: absolute;
+  top: 12px; left: 10px; right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+  pointer-events: none;
+}
+.progress-bar-container {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 4px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background-color: var(--brand-brown);
+  width: 0%;
+  border-radius: 4px;
+}
+.story-slider-wrapper {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.story-slide {
+  flex: 0 0 100%;
+}
+.story-slide .collab-card {
+  box-shadow: none;
+  border-radius: 0;
+}
+.story-click-zone {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 30%;
+  z-index: 20;
+}
+.story-click-zone.prev { left: 0; }
+.story-click-zone.next { right: 0; }

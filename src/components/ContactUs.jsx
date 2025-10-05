@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import './ContactUs.css'
+import React, { useState } from 'react';
+import './ContactUs.css';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -7,78 +7,71 @@ const ContactUs = () => {
     email: '',
     subject: '',
     message: ''
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('')
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-      setSubmitStatus('success')
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      })
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      setSubmitStatus('error')
+      setSubmitStatus('error');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const handleScheduleCall = () => {
-    // Add your scheduling logic here
-    console.log('Schedule call clicked')
-  }
+    // Replace with your actual scheduling link (e.g., Calendly)
+    window.open('YOUR_SCHEDULING_LINK_HERE', '_blank');
+  };
 
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
-        {/* Header */}
-   
+        {/* Header moved here for better structure */}
+        <div className="contact-header">
+          <h1 className="contact-title title-slide-in">
+            Let's Build Together
+          </h1>
+          <p className="contact-subtitle fade-in-up">
+            Ready to transform your brand? Get in touch and let's create something amazing together.
+          </p>
+        </div>
 
-        {/* Main Content - Image and Form Side by Side */}
+        {/* Main Content - Two Columns */}
         <div className="contact-content">
           
           {/* Left Side - Image */}
           <div className="contact-image-section fade-in-up">
             <div className="contact-image-container">
               <img 
-                src="tea.jpg" 
-                alt="Contact us - Team collaboration" 
+                src="tea.jpg" // Replace with your image
+                alt="Team collaboration over tea" 
                 className="contact-image"
               />
             </div>
-            
           </div>
 
           {/* Right Side - Contact Form */}
           <div className="contact-form-section fade-in-up">
-                    <div className="contact-header">
-          <h1 className="contact-title brand-heading title-slide-in">
-            Let's Build Together
-          </h1>
-          <p className="contact-subtitle brand-body fade-in-up">
-            Ready to transform your brand? Get in touch and let's create something amazing together.
-          </p>
-        </div>
-
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
@@ -87,7 +80,7 @@ const ContactUs = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="form-input brand-body"
+                  className="form-input"
                   placeholder="Your Name"
                 />
               </div>
@@ -99,19 +92,8 @@ const ContactUs = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="form-input brand-body"
+                  className="form-input"
                   placeholder="Your Email"
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="form-input brand-body"
-                  placeholder="Subject"
                 />
               </div>
 
@@ -120,9 +102,9 @@ const ContactUs = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="6"
-                  className="form-textarea brand-body"
-                  placeholder="Your Message"
+                  rows="5"
+                  className="form-textarea"
+                  placeholder="How can we help?"
                   required
                 />
               </div>
@@ -130,12 +112,12 @@ const ContactUs = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="submit-button brand-body"
+                className="submit-button"
               >
                 {isSubmitting ? (
                   <span className="button-content">
                     <div className="spinner" />
-                    Sending Message...
+                    Sending...
                   </span>
                 ) : (
                   <span className="button-content">
@@ -144,21 +126,17 @@ const ContactUs = () => {
                 )}
               </button>
 
-              {submitStatus === 'success' && (
-                <div className="status-message success brand-body">
-                  Thank you! Your message has been sent successfully.
+              {submitStatus && (
+                <div className={`status-message ${submitStatus}`}>
+                  {submitStatus === 'success' 
+                    ? 'Thank you! Your message has been sent successfully.' 
+                    : 'Sorry, there was an error. Please try again.'
+                  }
                 </div>
               )}
 
-              {submitStatus === 'error' && (
-                <div className="status-message error brand-body">
-                  Sorry, there was an error sending your message. Please try again.
-                </div>
-              )}
-
-              {/* Schedule Call Message */}
               <div className="schedule-call-section">
-                <p className="schedule-call-text brand-body">
+                <p className="schedule-call-text">
                   Want to schedule a call instead?{' '}
                   <button 
                     type="button"
@@ -171,11 +149,10 @@ const ContactUs = () => {
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;

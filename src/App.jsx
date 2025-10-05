@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import InteractiveRoadmap from './components/InteractiveRoadmap';
 import Navbar from './components/Navbar';
 import HeroSection from './components/Hero';
-import ContactUs from './components/ContactUs';
 import About from './components/About';
 import CollaborationSection from './components/Collaboration';
+import ContactUs from './components/ContactUs';
 import './App.css';
+
+const sections = [
+  { id: 'hero-section', Component: HeroSection, className: 'hero-page' },
+  { id: 'about-section', Component: About, className: 'about-page' },
+  { id: 'collab-section', Component: CollaborationSection, className: 'collab-page' },
+  { id: 'contact-section', Component: ContactUs, className: 'contact-page' },
+];
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
-  const containerRef = useRef(null);
   const isAnimating = useRef(false);
   const touchStartY = useRef(0);
-  const [roadmapScrollLocked, setRoadmapScrollLocked] = useState(false);
 
-  const totalSections = 4; // Hero, Roadmap, Contact
+  const totalSections = sections.length;
 
   const scrollToSection = (sectionIndex) => {
     if (isAnimating.current || sectionIndex < 0 || sectionIndex >= totalSections) return;
@@ -22,104 +26,71 @@ function App() {
     isAnimating.current = true;
     setCurrentSection(sectionIndex);
     
-    // Reset animation lock after transition completes
     setTimeout(() => {
       isAnimating.current = false;
-    }, 1000);
+    }, 1000); // Corresponds to the CSS transition duration
   };
 
   useEffect(() => {
     const handleWheel = (e) => {
-      // If we're in roadmap section and it has scroll lock active, don't handle app-level scrolling
-      if (currentSection === 1 && roadmapScrollLocked) {
-        return; // Let InteractiveRoadmap handle the scroll
-      }
-
-      e.preventDefault();
-      
       if (isAnimating.current) return;
+      e.preventDefault();
 
-      const delta = e.deltaY;
-      
-      if (delta > 0 && currentSection < totalSections - 1) {
-        // Scrolling down - go to next section
+      if (e.deltaY > 0) {
         scrollToSection(currentSection + 1);
-      } else if (delta < 0 && currentSection > 0) {
-        // Scrolling up - go to previous section
+      } else if (e.deltaY < 0) {
         scrollToSection(currentSection - 1);
       }
     };
 
-    // Touch events for mobile
     const handleTouchStart = (e) => {
-      if (currentSection === 1 && roadmapScrollLocked) {
-        return; // Let InteractiveRoadmap handle touch
-      }
       touchStartY.current = e.touches[0].clientY;
     };
 
     const handleTouchEnd = (e) => {
-      if (currentSection === 1 && roadmapScrollLocked) {
-        return; // Let InteractiveRoadmap handle touch
-      }
-
       if (isAnimating.current) return;
       
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchStartY.current - touchEndY;
       
-      // Minimum swipe distance
-      if (Math.abs(deltaY) < 50) return;
+      if (Math.abs(deltaY) < 50) return; // Ignore small swipes
       
-      if (deltaY > 0 && currentSection < totalSections - 1) {
-        // Swiped up - go to next section
+      if (deltaY > 0) {
         scrollToSection(currentSection + 1);
-      } else if (deltaY < 0 && currentSection > 0) {
-        // Swiped down - go to previous section
+      } else if (deltaY < 0) {
         scrollToSection(currentSection - 1);
       }
     };
 
-    // Add event listeners to the entire window for scroll anywhere functionality
     window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd, { passive: false });
     
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentSection, totalSections, roadmapScrollLocked]);
+  }, [currentSection]);
 
   return (
-    <div className="app-container" ref={containerRef}>
+    <div className="app-container">
       <Navbar />
       
       <div 
         className="sections-wrapper"
         style={{
-          transform: `translate3d(0, ${-currentSection * 100}vh, 0)`,
-          transition: 'transform 1s cubic-bezier(0.4, 0.0, 0.2, 1)',
-          willChange: 'transform'
+          transform: `translateY(${-currentSection * 100}vh)`,
+          transition: 'transform 1s cubic-bezier(0.65, 0, 0.35, 1)',
         }}
       >
-        <section className="page-section hero-page" id="hero-section">
-          <HeroSection />
-        </section>
-
-        <section className="page-section about-page" id="about-section">
-          <About />
-        </section>
-
-        <section className="page-section collab-page" id="collab-section">
-          <CollaborationSection />
-        </section>
-
-        <section className="page-section contact-page" id="contact-section">
-          <ContactUs />
-        </section>
-
+        {sections.map(({ id, Component, className }) => (
+          <section key={id} id={id} className={`page-section ${className}`}>
+            <div className="section-content">
+              <Component />
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );
