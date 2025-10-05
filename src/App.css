@@ -15,6 +15,7 @@
   --brand-olive: #909D7B;
   --brand-beige: #CBB3A1;
   --brand-gray: #A6A6A6;
+    font-size: 12px;
 }
 
 /* Keep your existing HTML background but override for app */
@@ -37,7 +38,7 @@ body {
   font-family: 'Belleza', sans-serif;
   height: 100%;
   overflow: hidden;
-  background-image: url('./clay2.jpg'); 
+  /* background-image: url('./clay2.jpg');  */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,14 +110,14 @@ body {
 /* NEW: Sections wrapper for smooth transitions */
 .sections-wrapper {
   width: 100%;
-  height: 300vh; /* 3 sections */
+  height: 400vh; /* 3 sections */
   position: relative;
   /* Hardware acceleration for smoother animations */
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
   /* Account for navbar height - start sections below navbar */
-  padding-top: 80px;
+  /* padding-top: 80px; */
 }
 
 /* NEW: Individual page sections */
