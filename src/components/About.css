@@ -9,6 +9,7 @@
   background: transparent;
   box-sizing: border-box; /* Ensures padding doesn't add to the width */
   align-self: center;
+  padding-bottom: 20rem;
 }
 
 .about-header {

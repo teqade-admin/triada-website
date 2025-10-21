@@ -13,6 +13,7 @@
   padding: 3rem;
   box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
   background: var(--brand-dark-cream);
+
 }
 
 .contact-header {
@@ -43,6 +44,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   align-items: stretch;
+  
 }
 
 /* Left Side - Image */
@@ -263,8 +265,9 @@
   }
   .contact-subtitle {
     font-size: clamp(1.5rem, 4vw, 1.2rem);
+    margin-bottom: 1.5rem;
   }
   .contact-form {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 }

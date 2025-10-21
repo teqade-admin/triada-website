@@ -1,0 +1,193 @@
+/* LetsConnect.css - Standardized Version with Larger Desktop Icons */
+
+.connect-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
+  background: transparent;
+  box-sizing: border-box;
+  padding-bottom: 10rem;
+}
+
+/* --- Header --- */
+.connect-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.connect-title {
+  font-size: var(--font-size-h2);
+  color: var(--brand-dark-brown);
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
+.connect-description {
+  font-size: var(--font-size-body-lg);
+  color: var(--brand-brown);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Grid for Value Propositions --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  justify-items: center;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.value-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+}
+
+.value-icon {
+  font-size: clamp(6rem, 12vw, 10rem); /* INCREASED: Was 4rem-6rem, now 6rem-10rem */
+  color: var(--brand-brown);
+  margin-bottom: var(--spacing-lg); /* Increased gap: 3rem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(6rem, 12vw, 10rem); /* Match font size for perfect centering */
+  height: clamp(6rem, 12vw, 10rem);
+}
+
+/* Style for SVG icons (Lucide) */
+.value-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5; /* Thinner stroke for cleaner look at larger sizes */
+}
+
+.value-title {
+  font-size: var(--font-size-h4);
+  color: var(--brand-dark-brown);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.value-description {
+  font-size: var(--font-size-body);
+  color: var(--brand-brown);
+  opacity: 0.9;
+}
+
+/* --- CTA Section --- */
+.connect-cta {
+  text-align: center;
+}
+
+/* Note: Use global .btn, .btn-secondary classes from App.css */
+
+/* --- Mobile Responsive --- */
+@media (max-width: 900px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+  
+  .value-icon {
+    font-size: clamp(5rem, 10vw, 7rem); /* Medium size for tablets */
+    width: clamp(5rem, 10vw, 7rem);
+    height: clamp(5rem, 10vw, 7rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .connect-section {
+    padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
+  }
+
+  .connect-header {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .values-grid {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  /* Mobile: Icon on left, content on right */
+  .value-card {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .value-icon {
+    font-size: 4.5rem; /* Fixed size for mobile left alignment */
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    margin-left: 0; /* Remove margin for left alignment */
+  }
+  
+  .value-icon svg {
+    stroke-width: 2; /* Slightly thicker for mobile visibility */
+  }
+
+  .value-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    max-width: 300px;
+  }
+
+  .value-title {
+    margin-bottom: 0.1rem;
+  }
+
+  /* Button centered at bottom */
+  .connect-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .connect-section {
+    padding: 3rem 1rem;
+    padding-bottom: 20rem;
+  }
+
+  .value-card {
+    gap: 1.5rem;
+  }
+
+  .value-icon {
+    font-size: 3rem;
+    width: 3.5rem;
+    height: 4.5rem;
+  }
+
+  .value-title {
+    font-size: 1.4rem;
+  }
+
+  .value-description {
+    font-size: 1.2rem;
+  }
+
+  .value-content {
+    max-width: 250px;
+  }
+}

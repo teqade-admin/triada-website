@@ -170,6 +170,7 @@ const Card = ({ title, intro, desc, linkUrl, linkText, imgSrc }) => (
         <a className="card-link" href={linkUrl}>
             {linkText}
         </a>
+
     </div>
 );
 

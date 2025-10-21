@@ -3,14 +3,14 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/Hero';
 import About from './components/About';
 import CollaborationSection from './components/Collaboration';
-import ContactUs from './components/ContactUs';
 import './App.css';
+import LetsConnect from './components/LetsConnect';
 
 const sections = [
   { id: 'hero-section', Component: HeroSection, className: 'hero-page' },
   { id: 'about-section', Component: About, className: 'about-page' },
   { id: 'collab-section', Component: CollaborationSection, className: 'collab-page' },
-  { id: 'contact-section', Component: ContactUs, className: 'contact-page' },
+  { id: 'connect-section', Component: LetsConnect, className: 'connect-page'}
 ];
 
 function App() {

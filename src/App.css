@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=The+Seasons&display=swap');
 
 :root {
+  /* Brand Colors */
   --brand-white: #FFFFFF;
   --brand-cream: #FAF2E0;
   --brand-brown: #9D542A;
@@ -13,6 +14,34 @@
   --brand-olive: #909D7B;
   --brand-beige: #CBB3A1;
   --brand-gray: #A6A6A6;
+  
+  /* Typography Scale - Standardized */
+  --font-size-h1: clamp(3rem, 8vw, 7rem);        /* Hero/Main titles */
+  --font-size-h2: clamp(2.5rem, 6vw, 5rem);      /* Section titles */
+  --font-size-h3: clamp(2rem, 4vw, 3.5rem);      /* Subsection titles */
+  --font-size-h4: clamp(1.6rem, 3vw, 2.2rem);    /* Card titles */
+  --font-size-body-lg: clamp(1.6rem, 2.5vw, 2rem); /* Large body text */
+  --font-size-body: clamp(1.4rem, 2vw, 1.6rem);  /* Standard body */
+  --font-size-body-sm: clamp(1.2rem, 1.5vw, 1.4rem); /* Small body */
+  
+  /* Button Styles - Standardized */
+  --button-padding: clamp(1rem, 1.5vw, 1.2rem) clamp(2rem, 4vw, 3rem);
+  --button-font-size: clamp(1.4rem, 2vw, 1.6rem);
+  --button-border-radius: 1rem;
+  --button-border-width: 2px;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+  
   font-size: 10px;
 }
 
@@ -20,7 +49,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden; /* This is key for the full-page scroll */
+  overflow: hidden;
   margin: 0;
   font-family: 'Belleza', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -84,12 +113,67 @@ body {
 .contact-page {
   background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
 }
+.connect-page {
+  background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
+}
+
+
+/* --- Standardized Button Classes --- */
+.btn {
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  border-radius: var(--button-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: var(--button-border-width) solid transparent;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  font-family: 'Belleza', sans-serif;
+  letter-spacing: 0.02em;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: transparent;
+  color: var(--brand-dark-brown);
+  border-color: var(--brand-brown);
+}
+
+.btn-primary:hover {
+  background: var(--brand-brown);
+  color: var(--brand-white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(157, 84, 42, 0.3);
+}
+
+.btn-secondary {
+  background: var(--brand-dark-brown);
+  color: var(--brand-white);
+  border-color: var(--brand-dark-brown);
+}
+
+.btn-secondary:hover {
+  background: var(--brand-brown);
+  border-color: var(--brand-brown);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(157, 84, 42, 0.4);
+}
+
+.btn-full-width {
+  width: 100%;
+}
 
 /* --- Mobile Adjustments --- */
 @media (max-width: 768px) {
-  .page-section {
-    /* Reduce padding on smaller screens to give content more space */
-    padding: 6rem 1rem;
+  .section-wrapper {
+    padding: 6rem 1.5rem;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 350px;
   }
 }
 

@@ -10,14 +10,15 @@
   color: var(--brand-brown);
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 3rem auto;
-  line-height: 1.5;
+  margin: 0 auto 2rem auto;
 }
 /* Collaboration.css - Final Corrected Version */
 
 /* --- Section & Grid Layout --- */
 .collab-section {
   width: 100%;
+  height: 100%;
+  padding-bottom: 10rem;
 }
 .collab-card-row {
   display: grid;
@@ -48,16 +49,17 @@
 
 /* --- Card Content & Image --- */
 .card-content {
-  padding: 2.5rem;
+  padding: .5rem;
   display: flex;
   flex-direction: column;
   text-align: left;
-  flex-grow: 1;
+  flex-grow:1;
+  gap: 0.1rem;
 }
 
 .card-image {
   width: 100%; /* Image now correctly takes the full width of the card */
-  height: 50%;
+  height: 40%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
@@ -77,13 +79,11 @@
   color: var(--brand-brown);
   margin-bottom: 0;
   opacity: 0.9;
-  line-height: 1.4;
   text-align: center;
 }
 .card-desc {
   font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   color: var(--brand-dark-brown);
-  line-height: 1.6;
   /* This allows the text to take up space and push the image down */
   flex-grow: 1;
   text-align: center;
@@ -92,12 +92,12 @@
 
 /* --- Full-Width Button --- */
 .card-link {
-  background-color: var(--brand-brown);
+  background-color: var(--brand-dark-brown);
   color: var(--brand-cream);
   border: none;
   padding: 1.5rem 0;
   width: 100%;
-  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   font-weight: 600;
   text-align: center;
   cursor: pointer;
@@ -107,7 +107,8 @@
   transition: background-color 0.3s ease;
 }
 .card-link:hover {
-  background-color: var(--brand-dark-brown);
+  background-color: var(--brand-brown);
+  color: var(--brand-cream);
 }
 
 /* --- Mobile Story Slider Styles --- */
@@ -119,7 +120,7 @@
   border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
-  height: 70vh;
+  height: 100%;
 }
 .story-progress-bars {
   position: absolute;
@@ -162,3 +163,7 @@
 }
 .story-click-zone.prev { left: 0; }
 .story-click-zone.next { right: 0; }
+
+.Space{
+  height:40%;
+}

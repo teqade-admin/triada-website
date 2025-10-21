@@ -18,5 +18,6 @@
 
 /* Specific size for a navbar logo */
 .navbar-logo .triada-animation {
-  font-size: clamp(1.5rem, 2vw, 50rem); 
+  font-size: clamp(2rem, 2vw, 50rem); 
+  padding-left: 2rem;
 }

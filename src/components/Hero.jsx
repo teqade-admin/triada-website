@@ -3,8 +3,6 @@ import { MapPin, ChevronLeft, ChevronRight, Target, Users, MessageSquare, Palett
 import './Hero.css';
 import AnimatedTriada from './AnimatedTriada';
 
-
-// Hero Section Component
 const HeroSection = () => {
   return (
     <section className="hero-section" id="home">
@@ -18,12 +16,8 @@ const HeroSection = () => {
         Scaling what’s local. Growing what’s global. Taking India everywhere.
       </p>
       <div className="hero-cta">
-        <a href="#process" className="cta-button cta-primary brand-body">
-          Explore Our Process
-        </a>
-        <a href="#contact" className="cta-button cta-secondary brand-body">
-          Start Your Journey
-        </a>
+        <button className="btn btn-primary">Explore Our Process</button>
+        <button className="btn btn-secondary">Start Your Journey</button>
       </div>
     </section>
   );
