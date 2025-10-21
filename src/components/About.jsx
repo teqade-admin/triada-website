@@ -22,10 +22,10 @@ const AboutSection = () => {
         <p className="cta-message">"Whether you're entering India, growing domestically, or expanding globally, Triada is the partner you need to execute your strategy with confidence and achieve impactful growth."</p>
         
         <div className="about-buttons">
-          <button className="know-more-btn">
+          <button className="btn btn-primary">
             Know More
           </button>
-          <button className="connect-btn" 
+          <button className="btn btn-secondary" 
            onClick={() => window.open('https://calendly.com/agent-inferno25/30min', '_blank', 'noopener,noreferrer')}
           >
             Let's Connect

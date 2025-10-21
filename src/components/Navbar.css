@@ -73,7 +73,7 @@
   width: 0;
   height: 2px;
   background-color: var(--brand-brown);
-  transition: width 0.3s ease;
+  /* transition: width 0.3s ease; */
 }
 
 .nav-button:hover::after {
@@ -152,7 +152,7 @@
     align-items: flex-start;
     padding: 80px 2rem 2rem;
     gap: 2rem;
-    font-size: 1.2rem;
+    font-size: 2rem;
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
@@ -222,7 +222,7 @@
   .navbar-menu {
     width: 260px;
     padding: 70px 1.5rem 1.5rem;
-    font-size: 1.1rem;
+    font-size: 2rem;
     gap: 1.5rem;
   }
 }
@@ -241,7 +241,7 @@
     align-items: center !important;
     padding: 0 !important;
     gap: clamp(1rem, 3vw, 2rem) !important;
-    font-size: clamp(0.9rem, 2vw, 1.5rem) !important;
+    font-size: clamp(2rem, 2vw, 1.5rem) !important;
     box-shadow: none !important;
     transition: none !important;
     z-index: auto !important;

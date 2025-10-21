@@ -11,14 +11,14 @@
 
 /* --- Typography (No changes) --- */
 .hero-title {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: var(--font-size-h2);
   font-weight: normal;
   color: var(--brand-dark-brown);
   line-height: 1.1;
 }
 
 .hero-slogan {
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: var(--font-size-h2);
   font-weight: normal;
   color: var(--brand-dark-brown);
   line-height: 1.1;
@@ -26,7 +26,7 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(2rem, 2vw, 4rem);
+  font-size: var(--font-size-h3);
   color: var(--brand-brown);
   opacity: 0.9;
   line-height: 1.6;

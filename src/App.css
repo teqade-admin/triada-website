@@ -20,8 +20,8 @@
   --font-size-h2: clamp(2.5rem, 6vw, 5rem);      /* Section titles */
   --font-size-h3: clamp(2rem, 4vw, 3.5rem);      /* Subsection titles */
   --font-size-h4: clamp(1.6rem, 3vw, 2.2rem);    /* Card titles */
-  --font-size-body-lg: clamp(1.6rem, 2.5vw, 2rem); /* Large body text */
-  --font-size-body: clamp(1.4rem, 2vw, 1.6rem);  /* Standard body */
+  --font-size-body-lg: clamp(1.6rem, 3vw, 3rem); /* Large body text */
+  --font-size-body: clamp(1.5rem, 2vw, 2rem);  /* Standard body */
   --font-size-body-sm: clamp(1.2rem, 1.5vw, 1.4rem); /* Small body */
   
   /* Button Styles - Standardized */

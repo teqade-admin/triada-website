@@ -72,7 +72,7 @@ const StorySlider = () => {
     const progressRefs = useRef([]);
 
     const startProgress = () => {
-        const duration = 5000;
+        const duration = 500;
         let start = null;
         
         const step = (timestamp) => {

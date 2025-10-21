@@ -47,15 +47,15 @@ const Navbar = () => {
               className="nav-button"
               onClick={() => scrollToSection('about-section')}
             >
-              About
+              About Us
             </button>
           </li>
           <li>
             <button 
               className="nav-button"
-              onClick={() => scrollToSection('contact-section')}
+              onClick={() => scrollToSection('connect-section')}
             >
-              Contact
+              Let's Connect
             </button>
           </li>
         </ul>
