@@ -19,7 +19,7 @@
   --font-size-h1: clamp(3rem, 8vw, 7rem);        /* Hero/Main titles */
   --font-size-h2: clamp(2.5rem, 6vw, 5rem);      /* Section titles */
   --font-size-h3: clamp(2rem, 4vw, 3.5rem);      /* Subsection titles */
-  --font-size-h4: clamp(1.6rem, 3vw, 2.2rem);    /* Card titles */
+  --font-size-h4: clamp(1.6rem, 3vw, 2.3rem);    /* Card titles */
   --font-size-body-lg: clamp(1.6rem, 3vw, 3rem); /* Large body text */
   --font-size-body: clamp(1.5rem, 2vw, 2rem);  /* Standard body */
   --font-size-body-sm: clamp(1.2rem, 1.5vw, 1.4rem); /* Small body */
@@ -115,6 +115,10 @@ body {
 }
 .connect-page {
   background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
+}
+
+.offerings-page {
+  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
 }
 
 

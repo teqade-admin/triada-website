@@ -79,6 +79,22 @@
 .nav-button:hover::after {
   width: 100%;
 }
+/* Remove default focus outline for mouse users */
+.nav-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Style for the currently active navigation button */
+.nav-button.active {
+  color: var(--brand-dark-brown);
+  font-weight: 700; /* Makes the text slightly bolder */
+}
+
+/* Makes the underline visible for the active button */
+.nav-button.active::after {
+  width: 100%;
+  background-color: var(--brand-dark-brown); /* Ensures the underline is dark */
+}
 
 /* Hamburger Menu Button - HIDDEN ON DESKTOP, VISIBLE ON MOBILE */
 .hamburger {
@@ -93,6 +109,7 @@
   padding: 0;
   z-index: 1001;
   transition: transform 0.3s ease;
+  color: var(--brand-brown);
 }
 
 .hamburger-line {
@@ -116,6 +133,9 @@
 
 .hamburger.active .hamburger-line:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
+}
+.hamburger:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* MOBILE STYLES - Show hamburger, hide desktop menu */
@@ -162,6 +182,11 @@
   .navbar-menu.active {
     right: 0 !important; /* Slide in from right */
   }
+  .nav-button.active {
+    background: var(--brand-cream);
+    padding-left: 1rem;
+    border-radius: 8px;
+}
   
   .navbar-menu li {
     width: 100%;

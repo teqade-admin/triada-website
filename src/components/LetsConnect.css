@@ -50,6 +50,7 @@
   align-items: center;
   max-width: 300px;
   text-align: center;
+  padding-bottom: 2rem;
 }
 
 .value-icon {
@@ -67,6 +68,7 @@
   width: 100%;
   height: 100%;
   stroke-width: 2;
+  /* align-self: center; */
 }
 
 .value-content{
@@ -76,14 +78,17 @@
 .value-title {
   font-size: var(--font-size-h4);
   color: var(--brand-dark-brown);
-  font-weight: 600;
-  margin-bottom: var(--spacing-sm);
+  margin:0;
+  /* text-align: left; */
 }
 
 .value-description {
   font-size: var(--font-size-body);
   color: var(--brand-brown);
   opacity: 0.9;
+  margin:0;
+  line-height: 1.6;
+  /* text-align: left; */
 }
 
 /* --- CTA Section --- */

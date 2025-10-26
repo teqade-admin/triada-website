@@ -1,29 +1,35 @@
-import { useState } from 'react'
-import './Navbar.css'
-import AnimatedTriada from './AnimatedTriada'
+import { useState } from 'react';
+import './Navbar.css';
+import AnimatedTriada from './AnimatedTriada';
+import { Menu, X } from 'lucide-react';
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+// This component now receives the activeSectionId from App.jsx
+const Navbar = ({ activeSectionId }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
-  // Smooth scroll to section function
+  // This function now dispatches a custom event that App.jsx listens for.
+  // This is the key to fixing the navigation click.
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
-    }
-    closeMenu() // Close mobile menu after navigation
-  }
+    const event = new CustomEvent('scrollToSection', { detail: sectionId });
+    window.dispatchEvent(event);
+    closeMenu();
+  };
+
+  // Your list of navigation items
+  const navLinks = [
+    { id: 'hero-section', name: 'Home' },
+    { id: 'about-section', name: 'About Us' },
+    { id: 'offerings-section', name: 'Offerings' },
+    { id: 'connect-section', name: 'Let\'s Connect' },
+  ];
 
   return (
     <nav className="navbar">
@@ -32,44 +38,27 @@ const Navbar = () => {
           <AnimatedTriada className="triada-animation" size="navbar" />
         </div>
         
-        {/* Desktop Menu */}
         <ul className={`navbar-menu brand-body ${isMenuOpen ? 'active' : ''}`}>
-          <li>
-            <button 
-              className="nav-button"
-              onClick={() => scrollToSection('hero-section')}
-            >
-              Home
-            </button>
-          </li>
-          <li>
-            <button 
-              className="nav-button"
-              onClick={() => scrollToSection('about-section')}
-            >
-              About Us
-            </button>
-          </li>
-          <li>
-            <button 
-              className="nav-button"
-              onClick={() => scrollToSection('connect-section')}
-            >
-              Let's Connect
-            </button>
-          </li>
+          {navLinks.map(link => (
+            <li key={link.id}>
+              <button 
+                // The 'active' class is now determined by the prop from App.jsx
+                className={`nav-button ${activeSectionId === link.id ? 'active' : ''}`}
+                onClick={() => scrollToSection(link.id)}
+              >
+                {link.name}
+              </button>
+            </li>
+          ))}
         </ul>
 
-        {/* Mobile Hamburger Button */}
         <button 
           className={`hamburger ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
           aria-expanded={isMenuOpen}
         >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
       
@@ -78,7 +67,7 @@ const Navbar = () => {
         <div className="mobile-overlay" onClick={closeMenu}></div>
       )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

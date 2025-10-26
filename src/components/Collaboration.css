@@ -59,11 +59,13 @@
 
 .card-image {
   width: 100%; /* Image now correctly takes the full width of the card */
-  height: 45%;
+  height: 55%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
-  margin: 0;  
+  margin: 0;
+  opacity: 0.7;
+  
 }
 
 /* --- Card Typography (Larger Fonts) --- */
@@ -73,13 +75,23 @@
   margin-bottom: 0;
   line-height: 1.2;
   text-align: center;
+  white-space: nowrap;      /* Ensures single line */
+  overflow: hidden;         /* Hides overflow */
+  text-overflow: ellipsis;  /* Adds '...' if text is too long */
 }
 .card-intro {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--brand-brown);
+  color: var(--brand-cream);
   margin-bottom: 0;
   opacity: 0.9;
   text-align: center;
+  white-space: nowrap;      /* Ensures single line */
+  overflow: hidden;         /* Hides overflow */
+  text-overflow: ellipsis;
+  background-color: var(--brand-brown);
+  width: 100%;
+  margin: 0; 
+
 }
 .card-desc {
   font-size: clamp(1.4rem, 2.5vw, 1.8rem);
@@ -88,6 +100,13 @@
   flex-grow: 1;
   text-align: center;
   margin-bottom: 0%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Shows up to 4 lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  padding: 0rem 1rem 1rem 1rem;
+  
 }
 
 /* --- Full-Width Button --- */
