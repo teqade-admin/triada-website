@@ -26,7 +26,7 @@ const AboutSection = () => {
             Know More
           </button>
           <button className="btn btn-secondary" 
-           onClick={() => window.open('https://calendly.com/agent-inferno25/30min', '_blank', 'noopener,noreferrer')}
+           onClick={() => window.open('https://calendly.com/founders-triadaconsulting/30min', '_blank', 'noopener,noreferrer')}
           >
             Let's Connect
           </button>

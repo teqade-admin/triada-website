@@ -56,6 +56,7 @@ const Offerings = () => {
 
   return (
     <section className="offerings-section">
+      
       <h2 className="offerings-main-title">Triada's Excellence</h2>
       <div className="offerings-container">
         {offeringsData.map((offering, index) => (

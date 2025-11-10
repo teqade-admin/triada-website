@@ -38,17 +38,64 @@ function App() {
     }, 1000); // This must match your CSS transition duration
   };
 
-  // Effect for handling user input (wheel, touch)
+  // Navigate to a specific section by ID
+  const navigateToSection = (sectionId) => {
+    const sectionIndex = sections.findIndex(section => section.id === sectionId);
+    if (sectionIndex !== -1) {
+      scrollToSection(sectionIndex);
+    }
+  };
+
   useEffect(() => {
+    const scrollLockRef = { current: false };
+    let accumulatedDelta = 0;
+    let scrollDebounceTimer = null;
+    let lastScrollTime = 0;
+
     const handleWheel = (e) => {
       e.preventDefault();
-      if (isAnimating.current) return;
-
-      if (e.deltaY > 0) {
-        scrollToSection(currentSection + 1); // Scroll Down
-      } else if (e.deltaY < 0) {
-        scrollToSection(currentSection - 1); // Scroll Up
+      
+      // Block if locked
+      if (scrollLockRef.current) {
+        return;
       }
+
+      const currentTime = Date.now();
+      const timeSinceLastScroll = currentTime - lastScrollTime;
+
+      // Accumulate delta
+      accumulatedDelta += e.deltaY;
+
+      // Clear previous timer
+      if (scrollDebounceTimer) {
+        clearTimeout(scrollDebounceTimer);
+      }
+
+      // FASTER: Reduced from 50ms to 15ms for quicker response
+      scrollDebounceTimer = setTimeout(() => {
+        // Only trigger if threshold is met
+        if (Math.abs(accumulatedDelta) > 30) {
+          
+          // Lock immediately
+          scrollLockRef.current = true;
+          lastScrollTime = Date.now();
+          
+          // Scroll
+          if (accumulatedDelta > 0) {
+            scrollToSection(currentSection + 1);
+          } else {
+            scrollToSection(currentSection - 1);
+          }
+          
+          // Unlock after animation (reduced from 1200ms to 1050ms)
+          setTimeout(() => {
+            scrollLockRef.current = false;
+          }, 1050); // 1000ms animation + 50ms buffer
+        }
+        
+        // Reset
+        accumulatedDelta = 0;
+      }, 15); // OPTIMIZED: Much faster response time
     };
 
     const handleTouchStart = (e) => {
@@ -56,18 +103,24 @@ function App() {
     };
 
     const handleTouchEnd = (e) => {
-      if (isAnimating.current) return;
+      if (scrollLockRef.current) return;
       
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchStartY.current - touchEndY;
       
-      if (Math.abs(deltaY) < 50) return; // Ignore small swipes
+      if (Math.abs(deltaY) < 50) return;
+      
+      scrollLockRef.current = true;
       
       if (deltaY > 0) {
-        scrollToSection(currentSection + 1); // Swipe Up
-      } else if (deltaY < 0) {
-        scrollToSection(currentSection - 1); // Swipe Down
+        scrollToSection(currentSection + 1);
+      } else {
+        scrollToSection(currentSection - 1);
       }
+      
+      setTimeout(() => {
+        scrollLockRef.current = false;
+      }, 1050);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
@@ -78,29 +131,60 @@ function App() {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
+      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
     };
   }, [currentSection]);
 
   // Effect for handling navbar clicks via custom event
   useEffect(() => {
     const handleNavClick = (event) => {
-        const sectionId = event.detail;
-        const sectionIndex = sections.findIndex(sec => sec.id === sectionId);
-        if (sectionIndex !== -1) {
-            scrollToSection(sectionIndex);
-        }
+      const sectionId = event.detail;
+      const sectionIndex = sections.findIndex(sec => sec.id === sectionId);
+      if (sectionIndex !== -1) {
+        scrollToSection(sectionIndex);
+      }
     };
 
     window.addEventListener('scrollToSection', handleNavClick);
 
     return () => {
-        window.removeEventListener('scrollToSection', handleNavClick);
+      window.removeEventListener('scrollToSection', handleNavClick);
     };
   }, []); // This only needs to run once
 
   return (
     <div className="app-container">
-      {/* Pass the active section ID to Navbar for highlighting */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -2,
+          pointerEvents: 'none'
+        }}
+      >
+        <source src="/background.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay for text readability */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: 'rgba(250, 242, 224, 0.5)',
+        zIndex: -1,
+        pointerEvents: 'none'
+      }} />
+
       <Navbar activeSectionId={sections[currentSection].id} />
       
       <div 
@@ -113,7 +197,12 @@ function App() {
         {sections.map(({ id, Component, className }) => (
           <section key={id} id={id} className={`page-section ${className}`}>
             <div className="section-content">
-              <Component />
+              {/* Pass navigateToSection to Hero component */}
+              {id === 'hero-section' ? (
+                <Component navigateToSection={navigateToSection} />
+              ) : (
+                <Component />
+              )}
             </div>
           </section>
         ))}

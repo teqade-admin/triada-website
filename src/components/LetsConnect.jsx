@@ -45,7 +45,7 @@ const LetsConnect = () => {
 
       <div className="connect-cta">
         <button className="btn btn-secondary" 
-        onClick={() => window.open('https://calendly.com/agent-inferno25/30min', '_blank', 'noopener,noreferrer')}
+        onClick={() => window.open('https://calendly.com/founders-triadaconsulting/30min', '_blank', 'noopener,noreferrer')}
         >Let's Make It Happen</button>
       </div>
     </section>

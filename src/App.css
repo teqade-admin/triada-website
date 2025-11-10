@@ -1,4 +1,4 @@
-/* App.css - Revised for Centering and Simplicity */
+/* App.css - Complete with Background Video */
 
 /* --- Font Imports and Brand Colors --- */
 @import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
@@ -16,13 +16,13 @@
   --brand-gray: #A6A6A6;
   
   /* Typography Scale - Standardized */
-  --font-size-h1: clamp(3rem, 8vw, 7rem);        /* Hero/Main titles */
-  --font-size-h2: clamp(2.5rem, 6vw, 5rem);      /* Section titles */
-  --font-size-h3: clamp(2rem, 4vw, 3.5rem);      /* Subsection titles */
-  --font-size-h4: clamp(1.6rem, 3vw, 2.3rem);    /* Card titles */
-  --font-size-body-lg: clamp(1.6rem, 3vw, 3rem); /* Large body text */
-  --font-size-body: clamp(1.5rem, 2vw, 2rem);  /* Standard body */
-  --font-size-body-sm: clamp(1.2rem, 1.5vw, 1.4rem); /* Small body */
+  --font-size-h1: clamp(3rem, 8vw, 7rem);
+  --font-size-h2: clamp(2.5rem, 6vw, 5rem);
+  --font-size-h3: clamp(2rem, 4vw, 3.5rem);
+  --font-size-h4: clamp(1.6rem, 3vw, 2.3rem);
+  --font-size-body-lg: clamp(1.6rem, 3vw, 3rem);
+  --font-size-body: clamp(1.5rem, 2vw, 2rem);
+  --font-size-body-sm: clamp(1.2rem, 1.5vw, 1.4rem);
   
   /* Button Styles - Standardized */
   --button-padding: clamp(1rem, 1.5vw, 1.2rem) clamp(2rem, 4vw, 3rem);
@@ -57,7 +57,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
+  background: var(--brand-cream);
 }
 
 #root {
@@ -66,7 +66,7 @@ body {
   overflow: hidden;
 }
 
-/* --- App Structure --- */
+/* --- App Structure with Background Video --- */
 .app-container {
   height: 100vh;
   width: 100vw;
@@ -74,53 +74,64 @@ body {
   position: relative;
 }
 
+/* Background Video Styling */
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/background.mp4');
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Video overlay for better text readability */
+.app-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 242, 224, 0.85); /* Brand cream with transparency */
+  z-index: -1;
+  pointer-events: none;
+}
+
 .sections-wrapper {
-  /* No need to set height manually; it will be determined by its children */
-  will-change: transform; /* Performance optimization */
+  will-change: transform;
+  position: relative;
+  z-index: 1;
 }
 
 /* --- Intuitive Section Centering --- */
 .page-section {
   width: 100vw;
   height: 100vh;
-  box-sizing: border-box; /* Ensures padding is included in the height/width */
-  
-  /* The Magic for Centering */
+  box-sizing: border-box;
   display: grid;
-  place-items: center; /* This perfectly centers the child horizontally and vertically */
-  
-  /* Add consistent padding for all sections */
-  padding: 8rem 2rem; /* Generous padding top/bottom and left/right */
-  overflow:hidden; /* Hide any accidental overflow within a section */
+  place-items: center;
+  padding: 8rem 2rem;
+  overflow: hidden;
+  background: transparent; /* Allow video to show through */
 }
 
-/* This is the direct child that will be centered by the grid */
 .section-content {
   width: 100%;
-  max-width: 1400px; /* Or whatever max-width your components use */
+  max-width: 1400px;
 }
 
-/* --- Specific Section Backgrounds --- */
-.hero-page {
-  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
-}
-.about-page {
-  background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
-}
-.collab-page {
-  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
-}
-.contact-page {
-  background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
-}
-.connect-page {
-  background: linear-gradient(135deg, var(--brand-white) 0%, var(--brand-cream) 100%);
-}
-
+/* Remove section-specific backgrounds since we have video now */
+.hero-page,
+.about-page,
+.collab-page,
+.contact-page,
+.connect-page,
 .offerings-page {
-  background: linear-gradient(135deg, var(--brand-cream) 0%, var(--brand-white) 100%);
+  background: transparent;
 }
-
 
 /* --- Standardized Button Classes --- */
 .btn {
@@ -178,6 +189,11 @@ body {
   .btn {
     width: 100%;
     max-width: 350px;
+  }
+  
+  /* Stronger overlay on mobile for better readability */
+  .app-container::after {
+    background: rgba(250, 242, 224, 0.9);
   }
 }
 
