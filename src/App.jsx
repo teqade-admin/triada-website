@@ -137,6 +137,7 @@ function App() {
 
   // Effect for handling navbar clicks via custom event
   useEffect(() => {
+
     const handleNavClick = (event) => {
       const sectionId = event.detail;
       const sectionIndex = sections.findIndex(sec => sec.id === sectionId);
@@ -151,36 +152,6 @@ function App() {
       window.removeEventListener('scrollToSection', handleNavClick);
     };
   }, []); // This only needs to run once
-
-
-  useEffect(() => {
-    // Force video to play on mobile
-    if (videoRef.current) {
-      const playVideo = () => {
-        videoRef.current.play().catch(error => {
-          console.log('Video autoplay prevented:', error);
-        });
-      };
-
-      // Try to play immediately
-      playVideo();
-
-      // Also try when user interacts with page
-      const handleInteraction = () => {
-        playVideo();
-        document.removeEventListener('touchstart', handleInteraction);
-        document.removeEventListener('click', handleInteraction);
-      };
-
-      document.addEventListener('touchstart', handleInteraction);
-      document.addEventListener('click', handleInteraction);
-
-      return () => {
-        document.removeEventListener('touchstart', handleInteraction);
-        document.removeEventListener('click', handleInteraction);
-      };
-    }
-  }, []);
 
   return (
     <div className="app-container">
