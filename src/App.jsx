@@ -180,7 +180,7 @@ function App() {
         left: 0,
         width: '100%',
         height: '100%',
-        background: 'rgba(250, 242, 224, 0.5)',
+        background: 'rgba(250, 242, 224, 0)',
         zIndex: -1,
         pointerEvents: 'none'
       }} />
