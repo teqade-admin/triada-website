@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import './Navbar.css';
 import AnimatedTriada from './AnimatedTriada';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Linkedin } from 'lucide-react';
 
-// This component now receives the activeSectionId from App.jsx
 const Navbar = ({ activeSectionId }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -15,8 +14,6 @@ const Navbar = ({ activeSectionId }) => {
     setIsMenuOpen(false);
   };
 
-  // This function now dispatches a custom event that App.jsx listens for.
-  // This is the key to fixing the navigation click.
   const scrollToSection = (sectionId) => {
     const event = new CustomEvent('scrollToSection', { detail: sectionId });
     window.dispatchEvent(event);
@@ -28,7 +25,7 @@ const Navbar = ({ activeSectionId }) => {
     { id: 'hero-section', name: 'Home' },
     { id: 'about-section', name: 'About Us' },
     { id: 'offerings-section', name: 'Offerings' },
-    { id: 'connect-section', name: 'Let\'s Connect' },
+    { id: 'connect-section', name: "Let's Connect" },
   ];
 
   return (
@@ -42,7 +39,6 @@ const Navbar = ({ activeSectionId }) => {
           {navLinks.map(link => (
             <li key={link.id}>
               <button 
-                // The 'active' class is now determined by the prop from App.jsx
                 className={`nav-button ${activeSectionId === link.id ? 'active' : ''}`}
                 onClick={() => scrollToSection(link.id)}
               >
@@ -50,6 +46,19 @@ const Navbar = ({ activeSectionId }) => {
               </button>
             </li>
           ))}
+          
+          {/* LinkedIn Icon */}
+          <li className="navbar-linkedin-item">
+            <a 
+              href="https://www.linkedin.com/company/triada-consulting-co/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="navbar-linkedin-link"
+              aria-label="Visit our LinkedIn page"
+            >
+              <Linkedin size={20} fill="currentColor" strokeWidth={2} />
+            </a>
+          </li>
         </ul>
 
         <button 

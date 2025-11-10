@@ -337,3 +337,108 @@
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* LinkedIn Icon Styling - MATCHING NAV ITEMS */
+.navbar-linkedin-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-linkedin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-brown);
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Same hover color as nav buttons */
+.navbar-linkedin-link:hover {
+  color: var(--brand-dark-brown);
+}
+
+/* Underline animation - SAME AS NAV ITEMS */
+.navbar-linkedin-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--brand-brown);
+  transition: width 0.3s ease;
+}
+
+.navbar-linkedin-link:hover::after {
+  width: 100%;
+}
+
+/* Focus style matching nav buttons */
+.navbar-linkedin-link:focus {
+  outline: 2px solid var(--brand-brown);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.navbar-linkedin-link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Mobile LinkedIn Styling */
+@media (max-width: 768px) {
+  .navbar-linkedin-item {
+    width: 100%;
+    border-bottom: 1px solid var(--brand-cream);
+    padding-bottom: 1rem;
+  }
+
+  .navbar-linkedin-link {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 1rem 0;
+    color: var(--brand-dark-brown);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-linkedin-link:hover {
+    background: var(--brand-cream);
+    padding-left: 1rem;
+    color: var(--brand-dark-brown);
+  }
+
+  /* Remove underline on mobile */
+  .navbar-linkedin-link::after {
+    display: none;
+  }
+
+  .navbar-linkedin-link svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Desktop LinkedIn Styling */
+@media (min-width: 769px) {
+  .navbar-linkedin-item {
+    width: auto !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .navbar-linkedin-link {
+    padding: 0.5rem 0 !important;
+  }
+
+  /* Show underline on desktop */
+  .navbar-linkedin-link::after {
+    display: block !important;
+  }
+}
