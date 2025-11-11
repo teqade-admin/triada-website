@@ -13,7 +13,7 @@
 
 /* Specific size for the hero title. This will override the general style */
 .hero-title .triada-animation {
-  font-size: clamp(3rem, 30vw, 20rem); 
+  font-size: clamp(2rem, 20vw, 20rem); 
 }
 
 /* Specific size for a navbar logo */
